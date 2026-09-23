@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SineAnime - Film, Dizi ve Anime İzle</title>
+    <style>
+        /* Genel Ayarlar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f1115;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigasyon Barı */
+        header {
+            background-color: #161920;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff3838;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #ff3838;
+            transition: 0.3s;
+        }
+
+        /* Vitrin (Hero) Alanı */
+        .hero {
+            background: linear-gradient(rgba(15, 17, 21, 0.4), #0f1115), url('https://unsplash.com') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5%;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .btn-play {
+            background-color: #ff3838;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-play:hover {
+            background-color: #e02424;
+            transform: scale(1.05);
+        }
+
+        /* İçerik Bölümleri */
+        .container {
+            padding: 40px 5%;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff3838;
+            padding-left: 10px;
+        }
+
+        /* Kart Grid Yapısı */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background-color: #161920;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 12px;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-top: 5px;
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ff3838;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .rating {
+            color: #ffd700;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b0c10;
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #161920;
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; text-align: center; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+            .card img { height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasyon -->
+    <header>
+        <div class="logo">Sine<span>Anime</span></div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Anasayfa</a></li>
+                <li><a href="#">Filmler</a></li>
+                <li><a href="#">Diziler</a></li>
+                <li><a href="#">Animeler</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Öne Çıkan (Hero) -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Günün Öne Çıkanı</h1>
+            <p>Macera, aksiyon ve gizem dolu bu yapımda sınırları zorlayan bir hikayeye tanıklık edin. Şimdi en yüksek kalitede izleyin.</p>
+            <a href="#" class="btn-play">Hemen İzle</a>
+        </div>
+    </div>
+
+    <!-- Ana İçerik Alanı -->
+    <div class="container">
+
+        <!-- Popüler Filmler -->
+        <h2 class="section-title">Popüler Filmler</h2>
+        <div class="grid">
+            <!-- Kart 1 -->
+            <div class="card">
+                <span class="badge">Film</span>
+                <img src="https://unsplash.com" alt="Film">
+                <div class="card-info">
+                    <div class="card-title">Yıldızlararası Yolculuk</div>
+                    <div class="card-meta">
+                        <span>2026</span>
+                        <span class="rating">★ 8.6</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Kart 2 -->
+            <div class="card">
+                <span class="badge">Film</span>
+                <img src="https://unsplash.com" alt="Film">
+                <div class="card-info">
+                    <div class="card-title">Gece Savaşçısı</div>
+                    <div class="card-meta">
+                        <span>2025</span>
+                        <span class="rating">★ 7.9</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Kart 3 -->
+            <div class="card">
+                <span class="badge">Film</span>
+                <img src="https://unsplash.com" alt="Film">
+                <div class="card-info">
+                    <div class="card-title">Sanal Gerçeklik</div>
+                    <div class="card-meta">
+                        <span>2026</span>
+                        <span class="rating">★ 8.2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Güncel Animeler -->
+        <h2 class="section-title">Güncel Animeler</h2>
+        <div class="grid">
+            <!-- Anime 1 -->
+            <div class="card">
+                <span class="badge" style="background-color: #9b59b6;">Anime</span>
+                <img src="https://unsplash.com" alt="Anime">
+                <div class="card-info">
+                    <div class="card-title">Cyber Samurai: 2099</div>
+                    <div class="card-meta">
+                        <span>Sezon 2</span>
+                        <span class="rating">★ 9.1</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Anime 2 -->
+            <div class="card">
+                <span class="badge" style="background-color: #9b59b6;">Anime</span>
+                <img src="https://unsplash.com" alt="Anime">
+                <div class="card-info">
+                    <div class="card-title">Gizemli Ormanın Ruhu</div>
+                    <div class="card-meta">
+                        <span>Sezon 1</span>
+                        <span class="rating">★ 8.4</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Anime 3 -->
+            <div class="card">
+                <span class="badge" style="background-color: #9b59b6;">Anime</span>
+                <img src="https://unsplash.com" alt="Anime">
+                <div class="card-info">
+                    <div class="card-title">Tokyo Gece Hayatı</div>
+                    <div class="card-meta">
+                        <span>Final</span>
+                        <span class="rating">★ 8.8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 SineAnime. Tüm Hakları Saklıdır. Bu site GitHub Pages ile barındırılmaktadır.</p>
+    </footer>
+
+</body>
+</html>
